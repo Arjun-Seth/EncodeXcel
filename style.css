@@ -1,0 +1,82 @@
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 50px;
+    /* border: 1px solid red; */
+}
+
+.container {
+    max-width: 600px;
+    margin: auto;
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    text-align: center;
+    color: #333;
+}
+
+input[type="file"] {
+    width: 96%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    margin: 10px 0; /* Space between buttons */
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    font-size: 16px;
+    
+}
+
+.button:hover {
+    background-color: #218838; /* Darker green on hover */
+}
+
+.status {
+    margin: 15px 0;
+    text-align: center;
+    font-size: 16px;
+    color: #333;
+}
+
+/* Add icons to the buttons */
+.button::before {
+    content: '';
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    margin-right: 8px;
+    background-size: cover;
+}
+
+#processButton::before {
+    background-image: url('https://img.icons8.com/ios-filled/30/ffffff/play.png'); /* Play icon */
+}
+
+#downloadBtn::before {
+    /* background-image: url('https://img.icons8.com/ios-filled/40/ffffff/download.png');  */
+    background-image: url('https://img.icons8.com/ios-filled/30/ffffff/download-2.png');
+
+}
+
+
+a:link{
+    text-decoration: none;
+}
