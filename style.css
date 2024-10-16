@@ -21,6 +21,17 @@ h1 {
     color: #333;
 }
 
+.gradient-text {
+    font-size: 48px; /* Adjust size as needed */
+    font-weight: bold;
+    background: linear-gradient(90deg, #3eea5d, #2ab2a0);/* Dark Gray to Black */
+    /* Example gradient */
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-align: center; /* Center the text */
+    margin-top: 20px;
+  }
+
 input[type="file"] {
     width: 96%;
     padding: 10px;
@@ -50,7 +61,7 @@ input[type="file"] {
 }
 
 .status {
-    margin: 15px 0;
+    margin: 25px 0;
     text-align: center;
     font-size: 16px;
     color: #333;
@@ -80,3 +91,40 @@ input[type="file"] {
 a:link{
     text-decoration: none;
 }
+
+
+#instructions {
+    margin-top: 30px;
+    max-width: 600px;
+    font-size: 15px;
+    font-family: 'Arial', sans-serif;
+}
+
+.note {
+    background-color: #e7f3fe;
+    border-left: 5px solid #2196F3;
+    padding: 12px 15px;
+    color: #333;
+    border-radius: 5px;
+    line-height: 1.6;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.note strong {
+    color: #0b79d0;
+}
+
+
+.sample-file {
+    margin-top: 30px;
+  }
+  
+  .sample-file a {
+    color: #0066cc;
+    text-decoration: none;
+    font-weight: bold;
+  }
+  
+  .sample-file a:hover {
+    text-decoration: underline;
+  }

@@ -39,15 +39,19 @@ processButton.addEventListener("click", function () {
 
         // If no data is found in the 3rd column, display a prompt message
         if (!hasData) {
-            statusMessage.textContent = "No data available in the Message column to encode.";
+            // statusMessage.textContent = "No data available in the Message column to encode.";
+            statusMessage.innerHTML = `
+        <img src="https://img.icons8.com/?size=100&id=11997&format=png&color=000000" alt="No Data Icon" style="width: 20px; vertical-align: text-top;">
+        No data available in the 3rd column (Message column) to encode.
+      `;
             return; // Exit the function
         }
-
+        
         // Add a new header for the encoded data
-        jsonData[0].push("Encoded Message"); // Assuming the first row is the header
+        jsonData[1].push("Encoded Message"); // Assuming the first row is the header
 
         // Loop through the rows and encode the data in the 3rd column (index 2)
-        for (let i = 1; i < jsonData.length; i++) {
+        for (let i = 2; i < jsonData.length; i++) {
             if (jsonData[i][2]) {
                 const originalMessage = jsonData[i][2];
                 jsonData[i][3] = encodeURIComponent(originalMessage)
@@ -89,7 +93,13 @@ processButton.addEventListener("click", function () {
         downloadButton.style.display = "block";
 
         // Update status message
-        statusMessage.textContent = 'File processed successfully! Click "Download Encoded File" to download.';
+
+        // statusMessage.textContent = 'File processed successfully! Click "Download Encoded File" to download.';
+        statusMessage.innerHTML = `
+        <img src="https://img.icons8.com/?size=100&id=63312&format=png&color=000000" alt="Success Icon" style="width: 22px; vertical-align: middle;">
+        File processed successfully! Click "Download Encoded File" to download.
+      `;
+
     };
 
     reader.readAsArrayBuffer(fileInput.files[0]);
