@@ -10,6 +10,52 @@ fileInput.addEventListener("change", function () {
     downloadButton.style.display = "none"; // Hide the download button
 });
 
+// SMS Length Calculator
+function calculateSMSParts(text) {
+    const GSM7_BASIC = "@£$¥èéùìòÇ\nØø\rÅåΔ_ΦΓΛΩΠΨΣΘΞ¡¿" +
+                       "ABCDEFGHIJKLMNOPQRSTUVWXYZÄÖÑÜ§¿" +
+                       "abcdefghijklmnopqrstuvwxyzäöñüà" +
+                       "0123456789" +
+                       " !\"#¤%&'()*+,-./:;<=>?";
+    
+    const GSM7_EXTENDED = "^{}\\[~]|€";
+    
+    function isGSM7(char) {
+        return GSM7_BASIC.includes(char) || GSM7_EXTENDED.includes(char);
+    }
+    
+    let isGSM7Encoding = true;
+    let maxLengthSingle, maxLengthConcat;
+
+    // Check for GSM-7 characters
+    for (let char of text) {
+        if (!isGSM7(char)) {
+            isGSM7Encoding = false;
+            break; // No need to check further if a non-GSM character is found
+        }
+    }
+
+    // Define SMS character limits based on encoding
+    if (isGSM7Encoding) {
+        maxLengthSingle = 160;
+        maxLengthConcat = 153;
+    } else {
+        maxLengthSingle = 70;
+        maxLengthConcat = 67;
+    }
+
+    // Calculate the number of parts required
+    let parts;
+    if (text.length <= maxLengthSingle) {
+        parts = 1;
+    } else {
+        parts = Math.ceil(text.length / maxLengthConcat);
+    }
+
+    return parts; // Return only the number of parts
+}
+
+
 // Process and encode function
 processButton.addEventListener("click", function () {
     if (!fileInput.files.length) {
@@ -49,6 +95,7 @@ processButton.addEventListener("click", function () {
         
         // Add a new header for the encoded data
         jsonData[1].push("Encoded Message"); // Assuming the first row is the header
+        jsonData[1].push("SMS Length (PDU)"); // Assuming the first row is the header
 
         // Loop through the rows and encode the data in the 3rd column (index 2)
         for (let i = 2; i < jsonData.length; i++) {
@@ -57,8 +104,10 @@ processButton.addEventListener("click", function () {
                 jsonData[i][3] = encodeURIComponent(originalMessage)
                     .replace(/'/g, "%27")
                     .replace(/"/g, "%22"); // URL encoding
+                    jsonData[i][4]=calculateSMSParts(originalMessage); // SMS Length
             } else {
                 jsonData[i][3] = ""; // If there's no original message, set encoded message to empty
+                jsonData[i][4] = 1; // If there's no original message, set sms part to 1
             }
         }
 
@@ -96,7 +145,7 @@ processButton.addEventListener("click", function () {
 
         // statusMessage.textContent = 'File processed successfully! Click "Download Encoded File" to download.';
         statusMessage.innerHTML = `
-        <img src="https://img.icons8.com/?size=100&id=63312&format=png&color=000000" alt="Success Icon" style="width: 22px; vertical-align: middle;">
+       <img src="./asset/icons8-success.svg" alt="Success Icon" style="width: 24px; vertical-align: middle;">
         File processed successfully! Click "Download Encoded File" to download.
       `;
 

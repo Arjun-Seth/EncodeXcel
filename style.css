@@ -3,17 +3,24 @@ body {
     font-family: Arial, sans-serif;
     background-color: #f4f4f4;
     margin: 0;
-    padding: 50px 0;
+    padding: 30px 0 0 0;
     /* border: 1px solid red; */
+  
+   box-sizing: border-box;
+  
 }
 
+
+
 .container {
+ 
     max-width: 600px;
     margin: auto;
     background: white;
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+   
 }
 
 h1 {
@@ -135,10 +142,25 @@ a:link{
     color: #333; /* Dark gray text color */
     text-align: center; /* Center the text */
     padding: 10px 0; /* Vertical padding */
-    position: absolute; /* Relative positioning */
+    position: relative; /* Relative positioning */
     bottom: 0; /* Align to the bottom */
     width: 100%; /* Full width */
     font-size: 16px; /* Font size */
     font-family: Arial, sans-serif; /* Font family */
     border-top: 1px solid #ccc; /* Top border */
 }
+
+
+#img-cont{
+    display: flex;
+    /* border: 1px solid blue; */
+    justify-content: center;
+}
+
+.logo{
+    /* margin-top: 20px; */
+    width: 7rem;
+    height: auto;
+    /* border: 1px solid red; */
+}
+

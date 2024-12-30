@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,34 +8,42 @@
     <link rel="stylesheet" href="style.css"> <!-- Link to external CSS -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.16.9/xlsx.full.min.js"></script>
 </head>
+
 <body>
+
     <div class="container">
+        <div id="img-cont">
+            <img src="./asset/mcarbon-logo.jpg" alt="mCarbon Logo" class="logo">
+        </div>
         <h1 class="gradient-text">EncodeXcel</h1>
-        <input type="file" id="upload" accept=".xlsx, .xls, .csv, .xlsb"/>
+        <input type="file" id="upload" accept=".xlsx, .xls, .csv, .xlsb" />
         <button id="processButton" class="button">Process and Encode</button>
         <div id="status" class="status"></div>
         <a id="downloadButton" href="#" style="display: none;" download="encoded_data.xlsx">
-            
+
             <button id="downloadBtn" class="button">Download Encoded File</button>
         </a>
         <!-- <button id="downloadButton" class="button" style="display: none;">Download Encoded File</button> -->
 
         <div id="instructions">
             <p class="note">
-                <strong>Note:</strong> The URL encoding process occurs in <strong>Column 3</strong>, starting from <strong>Row 3</strong> onwards of Excel sheet. Please structure your data accordingly for accurate results.
+                <strong>Note:</strong> The URL encoding process occurs in <strong>Column 3</strong>, starting from
+                <strong>Row 3</strong> onwards of Excel sheet. Please structure your data accordingly for accurate
+                results.
             </p>
         </div>
 
         <div class="sample-file">
             <p><a href="./asset/sample-data.xlsx" download>Download a sample Excel file</a> for testing.</p>
-          </div>
+        </div>
 
     </div>
 
     <footer class="footer">
         <p>Made with ❤️ by Arjun</p>
     </footer>
-    
+
     <script src="script.js"></script>
 </body>
+
 </html>
